@@ -1,7 +1,7 @@
-import { Counter } from "./components/counter/counter";
-import { Logo } from "./components/logo/logo";
+import {DDD} from './A'
 
 export default () => {
+
   return (
     <>
       <head>
@@ -9,8 +9,7 @@ export default () => {
         <title>Qwik Blank App</title>
       </head>
       <body>
-        <Logo />
-        <Counter />
+        <DDD/>
       </body>
     </>
   );
