@@ -23,7 +23,10 @@
     "qwik": "qwik"
   },
   "devDependencies": {
+    "@qwik.dev/core": "2.0.0-alpha.10",
+    "@qwik.dev/router": "2.0.0-alpha.10",
     "@types/eslint": "8.56.10",
+    "@types/marked": "^6.0.0",
     "@types/node": "20.14.11",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
@@ -33,8 +36,9 @@
     "typescript": "5.4.5",
     "undici": "*",
     "vite": "5.3.5",
-    "vite-tsconfig-paths": "^4.2.1",
-    "@qwik.dev/router": "2.0.0-alpha.10",
-    "@qwik.dev/core": "2.0.0-alpha.10"
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "marked": "^15.0.12"
   }
 }
