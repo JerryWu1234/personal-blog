@@ -1,0 +1,97 @@
+/* Dark Mode Styles */
+.dark-mode {
+  --text-color: #e5e7eb;
+  --text-light: #d1d5db;
+  --text-lighter: #9ca3af;
+  --background-color: #111827;
+  --background-alt: #1f2937;
+  --card-background: #1f2937;
+  --border-color: #374151;
+  --header-bg: rgba(17, 24, 39, 0.8);
+  --code-bg: #2d3748;
+  --blockquote-border: #4b5563;
+
+  /* Keep accent colors the same or adjust as needed */
+  --primary-color: #818cf8;
+  --primary-light: #a5b4fc;
+  --primary-dark: #6366f1;
+  --accent-color: #fb7185;
+  --accent-light: #fda4af;
+  --accent-dark: #f43f5e;
+
+  /* Shadows for dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode specific overrides */
+.dark-mode h1 {
+  background: linear-gradient(to right, var(--primary-light), var(--accent-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark-mode .skill-card,
+.dark-mode .list-item,
+.dark-mode .project-card-front,
+.dark-mode .project-card-back {
+  background-color: var(--card-background);
+  border-color: var(--border-color);
+}
+
+.dark-mode .cta {
+  background-color: var(--background-alt);
+}
+
+.dark-mode .social-list li a {
+  border-color: var(--primary-light);
+}
+
+.dark-mode .social-list li a:hover {
+  background-color: var(--primary-light);
+  color: var(--background-color);
+}
+
+.dark-mode .theme-toggle {
+  color: var(--text-light);
+}
+
+.dark-mode .timeline-marker::before {
+  background-color: var(--primary-light);
+}
+
+.dark-mode .timeline-item::before {
+  background-color: var(--border-color);
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background-color: var(--background-alt);
+  border-color: var(--border-color);
+  color: var(--text-light);
+}
+
+.dark-mode input:focus,
+.dark-mode textarea:focus {
+  border-color: var(--primary-light);
+}
+
+.dark-mode .floating-action-button {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+}
+
+.dark-mode .testimonial-slide {
+  background-color: var(--card-background);
+}
+
+.dark-mode .testimonial-dot {
+  background-color: var(--text-lighter);
+}
+
+.dark-mode .testimonial-dot.active {
+  background-color: var(--primary-light);
+}

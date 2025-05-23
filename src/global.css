@@ -4,45 +4,72 @@
 @import url('./card-animations.css');
 @import url('./button-animations.css');
 @import url('./modern-cards.css');
+@import url('./components.css');
+@import url('./dark-mode.css');
+@import url('./homepage.css');
+@import url('./contact.css');
+@import url('./about.css');
+@import url('./projects.css');
+@import url('./project-card.css');
 
 /* 1. Basic Reset & Root Variables
 -------------------------------------------------- */
 :root {
+  /* Typography */
   --primary-font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --heading-font: 'Outfit', var(--primary-font);
-  --monospace-font: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --mono-font: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  --base-font-size: 16px;
+  --line-height: 1.6;
 
   /* Modern color palette */
-  --primary-color: #6366f1;
+  --primary-color: #6366f1; /* Indigo */
   --primary-light: #818cf8;
   --primary-dark: #4f46e5;
-  --accent-color: #f43f5e;
+  --accent-color: #f43f5e; /* Rose */
   --accent-light: #fb7185;
   --accent-dark: #e11d48;
   
-  --text-color: #1f2937;
-  --text-light: #4b5563;
-  --text-lighter: #9ca3af;
+  --text-color: #1f2937; /* Gray 800 */
+  --text-light: #4b5563; /* Gray 600 */
+  --text-lighter: #9ca3af; /* Gray 400 */
   --background-color: #ffffff;
-  --background-alt: #f9fafb;
+  --background-alt: #f9fafb; /* Gray 50 */
   --card-background: #ffffff;
   --link-color: var(--primary-color);
   --link-hover-color: var(--primary-dark);
-  --border-color: #e5e7eb;
+  --border-color: #e5e7eb; /* Gray 200 */
   --header-bg: rgba(255, 255, 255, 0.8);
-  --code-bg: #f3f4f6;
-  --blockquote-border: #d1d5db;
-  --success-color: #10b981;
-  --warning-color: #f59e0b;
-  --error-color: #ef4444;
+  --code-bg: #f3f4f6; /* Gray 100 */
+  --blockquote-border: #d1d5db; /* Gray 300 */
+  --success-color: #10b981; /* Emerald 500 */
+  --warning-color: #f59e0b; /* Amber 500 */
+  --error-color: #ef4444; /* Red 500 */
+  --info-color: #3b82f6; /* Blue 500 */
+
+  /* Additional Colors for Gradients and Accents */
+  --gradient-start: #6366f1; /* Indigo 500 */
+  --gradient-end: #ec4899; /* Pink 500 */
+  --gradient-alt-start: #8b5cf6; /* Violet 500 */
+  --gradient-alt-end: #3b82f6; /* Blue 500 */
+  --highlight-color: #c4b5fd; /* Violet 300 */
+  --muted-color: #f3f4f6; /* Gray 100 */
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-outline: 0 0 0 3px rgba(99, 102, 241, 0.5);
 
-  --max-width: 1120px;
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --max-width: 1200px;
   --spacing-unit: 1rem; /* Approx 16px if root font-size is 100% */
   
   /* Border radius */
@@ -50,6 +77,21 @@
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
   --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-index layers */
+  --z-negative: -1;
+  --z-elevate: 1;
+  --z-dropdown: 10;
+  --z-sticky: 100;
+  --z-fixed: 200;
+  --z-modal: 300;
+  --z-popover: 400;
+  --z-tooltip: 500;
 }
 
 *,

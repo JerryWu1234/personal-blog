@@ -1,128 +1,164 @@
-import { component$ } from '@builder.io/qwik';
+import { component$ } from '@qwik.dev/core';
 import { routeLoader$ } from '@builder.io/qwik-city';
+import Timeline, { TimelineItem } from '~/components/timeline';
+import Skills from '~/components/skills';
 
 // Define the GitHubRepo interface focusing on the language field
 interface GitHubRepo {
   language: string | null;
-  // Add other fields if needed, but language is key here
-  // For consistency with the projects page, let's add a few more
-  id: number; // Though not strictly needed for this feature, good for consistency
-  name: string; // Also not strictly needed here
+  id: number;
+  name: string;
 }
 
 export const useProficientTechnologies = routeLoader$<string[]>(async () => {
   const controller = new AbortController();
 
-  const res = await fetch('https://api.github.com/users/JerryWu1234/repos', {
-    signal: controller.signal,
-    headers: {
-      'Accept': 'application/vnd.github.v3+json',
-      'User-Agent': 'Qwik-JerryWu-Website-AboutPage'
-    }
-  });
-
-  if (!res.ok) {
-    // In a real app, you might want to log this error or handle it more gracefully
-    console.error(`GitHub API request failed: ${res.status} ${res.statusText}`);
-    // Return empty array or throw, depending on how you want to handle errors upstream
-    // For this page, returning an empty array will lead to the "Could not infer..." message.
-    return []; 
-  }
-  
-  const repos = await res.json() as GitHubRepo[];
-  const languages = new Set<string>();
-  
-  if (Array.isArray(repos)) {
-    for (const repo of repos) {
-      if (repo.language) {
-        languages.add(repo.language);
+  try {
+    const res = await fetch('https://api.github.com/users/JerryWu1234/repos', {
+      signal: controller.signal,
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'Qwik-JerryWu-Website-AboutPage'
       }
+    });
+
+    if (!res.ok) {
+      console.error(`GitHub API request failed: ${res.status} ${res.statusText}`);
+      return []; 
     }
-  } else {
-    // Handle cases where the API might not return an array (e.g. error object that wasn't caught by !res.ok)
-    console.warn('GitHub API did not return an array of repositories.');
+    
+    const repos = await res.json() as GitHubRepo[];
+    const languages = new Set<string>();
+    
+    if (Array.isArray(repos)) {
+      for (const repo of repos) {
+        if (repo.language) {
+          languages.add(repo.language);
+        }
+      }
+    } else {
+      console.warn('GitHub API did not return an array of repositories.');
+      return [];
+    }
+    
+    return Array.from(languages).sort();
+  } catch (error) {
+    console.error('Error fetching GitHub repositories:', error);
     return [];
   }
-  
-  return Array.from(languages).sort(); // Sort for consistent order
 });
 
 export default component$(() => {
   const proficientTechnologiesSignal = useProficientTechnologies();
 
+  const workExperience: TimelineItem[] = [
+    {
+      title: 'Senior Frontend Developer',
+      subtitle: 'Tech Solutions Inc.',
+      date: '2020 - Present',
+      description: 'Lead the frontend development team in building and maintaining multiple web applications. Implemented performance optimizations that improved load times by 40%. Established coding standards and best practices for the team.'
+    },
+    {
+      title: 'Frontend Developer',
+      subtitle: 'Web Innovations',
+      date: '2016 - 2020',
+      description: 'Developed responsive web applications using React and Vue.js. Collaborated with UX/UI designers to implement pixel-perfect interfaces. Mentored junior developers and conducted code reviews.'
+    },
+    {
+      title: 'Web Developer',
+      subtitle: 'Digital Creations',
+      date: '2013 - 2016',
+      description: 'Built and maintained client websites using HTML, CSS, and JavaScript. Implemented responsive designs and ensured cross-browser compatibility. Worked with backend developers to integrate frontend with APIs.'
+    }
+  ];
+
+  const education: TimelineItem[] = [
+    {
+      title: 'Bachelor of Science in Computer Science',
+      subtitle: 'University of Technology',
+      date: '2009 - 2013',
+      description: 'Graduated with honors. Specialized in web development and user interface design.'
+    },
+    {
+      title: 'Advanced Web Development Certification',
+      subtitle: 'Frontend Masters',
+      date: '2015',
+      description: 'Completed intensive training in advanced JavaScript, React, and modern frontend development techniques.'
+    }
+  ];
+
+  const skills = [
+    { name: 'JavaScript', level: 95, color: '#f7df1e' },
+    { name: 'React', level: 90, color: '#61dafb' },
+    { name: 'Vue.js', level: 85, color: '#42b883' },
+    { name: 'TypeScript', level: 88, color: '#3178c6' },
+    { name: 'Node.js', level: 80, color: '#68a063' },
+    { name: 'CSS/SCSS', level: 92, color: '#264de4' },
+    { name: 'HTML5', level: 95, color: '#e34f26' },
+    { name: 'GraphQL', level: 75, color: '#e535ab' }
+  ];
+
   return (
-    <main>
-      <h1 class="slide-up">About Me</h1>
-      <section class="reveal">
-        <h2>Background</h2>
-        <p>I'm Jerry Wu, a passionate frontend developer with over 10 years of experience in the web development industry. I specialize in building high-performance, responsive web applications using modern JavaScript frameworks and libraries.</p>
-        <p>Throughout my career, I've worked with various companies ranging from startups to large enterprises, helping them create exceptional user experiences through clean, efficient code and intuitive interfaces.</p>
+    <div class="about-page">
+      <section class="page-header fade-in">
+        <h1>About Me</h1>
+        <div class="section-divider"></div>
+      </section>
+
+      <section class="about-intro reveal">
+        <div class="about-intro-content">
+          <div class="about-image reveal-left">
+            <div class="profile-image-placeholder">
+              <span>JW</span>
+            </div>
+          </div>
+          <div class="about-text reveal-right">
+            <p>I'm Jerry Wu, a passionate frontend developer with over 10 years of experience in the web development industry. I specialize in building high-performance, responsive web applications using modern JavaScript frameworks and libraries.</p>
+            <p>Throughout my career, I've worked with various companies ranging from startups to large enterprises, helping them create exceptional user experiences through clean, efficient code and intuitive interfaces.</p>
+            <p>My approach to development combines technical expertise with creative problem-solving to deliver solutions that not only meet but exceed client expectations. I believe in writing clean, maintainable code and staying up-to-date with the latest industry trends.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-section reveal">
+        <h2>My Skills</h2>
+        <Skills skills={skills} />
       </section>
       
-      <section class="reveal">
+      <section class="experience-section reveal">
         <h2>Work Experience</h2>
-        <div class="experience-item card hover-lift reveal-left" style={{ animationDelay: '0.1s' }}>
-          <h3>Senior Frontend Developer - Tech Solutions Inc.</h3>
-          <p class="date">2020 - Present</p>
-          <ul>
-            <li class="stagger-item">Lead the frontend development team in building and maintaining multiple web applications</li>
-            <li class="stagger-item">Implemented performance optimizations that improved load times by 40%</li>
-            <li class="stagger-item">Established coding standards and best practices for the team</li>
-          </ul>
-        </div>
-        
-        <div class="experience-item card hover-lift reveal" style={{ animationDelay: '0.3s' }}>
-          <h3>Frontend Developer - Web Innovations</h3>
-          <p class="date">2016 - 2020</p>
-          <ul>
-            <li class="stagger-item">Developed responsive web applications using React and Vue.js</li>
-            <li class="stagger-item">Collaborated with UX/UI designers to implement pixel-perfect interfaces</li>
-            <li class="stagger-item">Mentored junior developers and conducted code reviews</li>
-          </ul>
-        </div>
-        
-        <div class="experience-item card hover-lift reveal-right" style={{ animationDelay: '0.5s' }}>
-          <h3>Web Developer - Digital Creations</h3>
-          <p class="date">2013 - 2016</p>
-          <ul>
-            <li class="stagger-item">Built and maintained client websites using HTML, CSS, and JavaScript</li>
-            <li class="stagger-item">Implemented responsive designs and ensured cross-browser compatibility</li>
-            <li class="stagger-item">Worked with backend developers to integrate frontend with APIs</li>
-          </ul>
-        </div>
+        <Timeline items={workExperience} />
       </section>
       
-      <section class="reveal">
+      <section class="education-section reveal">
         <h2>Education</h2>
-        <p><strong>Bachelor of Science in Computer Science</strong> - University of Technology, 2013</p>
+        <Timeline items={education} />
       </section>
       
-      <section class="reveal">
+      <section class="technologies-section reveal">
+        <h2>Technologies I Work With</h2>
+        <div class="technologies-grid">
+          {(() => {
+            const technologies = proficientTechnologiesSignal.value.length > 0 
+              ? proficientTechnologiesSignal.value 
+              : ['JavaScript', 'TypeScript', 'React', 'Vue.js', 'Node.js', 'HTML5', 'CSS3', 'SCSS', 'GraphQL', 'Webpack', 'Git'];
+
+            return technologies.map((tech, index) => (
+              <div key={tech} class="technology-item stagger-item hover-scale" style={{ animationDelay: `${0.1 * (index + 1)}s` }}>
+                {tech}
+              </div>
+            ));
+          })()}
+        </div>
+      </section>
+      
+      <section class="current-focus-section reveal">
         <h2>Current Focus</h2>
         <p>I'm currently focused on improving performance and developer experience in frontend architectures, especially with server-first frameworks like Qwik and Next.js. I'm also exploring the potential of AI in web development and how it can enhance user experiences.</p>
-        <div style={{ marginTop: '1.5rem' }}>
-          <a href="mailto:409187100@qq.com" class="btn btn-primary btn-pulse">Contact Me</a>
+        <div class="cta-container">
+          <a href="/contact" class="btn btn-primary btn-shine">Get In Touch</a>
         </div>
       </section>
-      
-      <section class="reveal">
-        <h2>Proficient Technologies</h2>
-        {(() => {
-          const technologies = proficientTechnologiesSignal.value;
-
-          if (technologies.length > 0) {
-            return (
-              <ul>
-                {technologies.map((lang, index) => (
-                  <li key={lang} class="stagger-item hover-scale" style={{ animationDelay: `${0.1 * (index + 1)}s` }}>{lang}</li>
-                ))}
-              </ul>
-            );
-          } else {
-            return <p class="fade-in">Primary technologies will be listed here as they appear on public projects, or if GitHub data could not be fetched.</p>;
-          }
-        })()}
-      </section>
-    </main>
+    </div>
   );
 });

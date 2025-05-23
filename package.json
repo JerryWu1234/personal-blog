@@ -25,6 +25,7 @@
   "devDependencies": {
     "@qwik.dev/core": "2.0.0-alpha.10",
     "@qwik.dev/router": "2.0.0-alpha.10",
+    "@qwikest/icons": "^0.0.13",
     "@types/eslint": "8.56.10",
     "@types/marked": "^6.0.0",
     "@types/node": "20.14.11",
@@ -39,6 +40,7 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "dependencies": {
-    "marked": "^15.0.12"
+    "marked": "^15.0.12",
+    "tsparticles-slim": "^2.12.0"
   }
 }
