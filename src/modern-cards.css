@@ -1,0 +1,192 @@
+/* Modern Card Styles for 2025 */
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-5px);
+}
+
+/* Neumorphic card */
+.neumorphic-card {
+  background: var(--background-alt);
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.05),
+    -8px -8px 16px rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-card:hover {
+  box-shadow: 
+    12px 12px 20px rgba(0, 0, 0, 0.07),
+    -12px -12px 20px rgba(255, 255, 255, 0.9);
+}
+
+/* Gradient border card */
+.gradient-card {
+  position: relative;
+  background: var(--card-background);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  z-index: 1;
+}
+
+.gradient-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  z-index: -1;
+  border-radius: calc(var(--radius-lg) + 2px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-card:hover::before {
+  opacity: 1;
+}
+
+/* Modern skill card */
+.skill-card {
+  background: var(--card-background);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border-top: 4px solid var(--primary-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, 
+    rgba(var(--primary-light-rgb), 0.05), 
+    rgba(var(--primary-dark-rgb), 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.skill-card:hover::after {
+  opacity: 1;
+}
+
+/* Experience card */
+.experience-item {
+  background: var(--card-background);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.experience-item h3 {
+  color: var(--primary-dark);
+  margin-top: 0;
+}
+
+.experience-item .date {
+  color: var(--text-lighter);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Blog post card */
+.list-item {
+  background: var(--card-background);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.list-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.list-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.list-item:hover::before {
+  opacity: 1;
+}
+
+.list-item h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.list-item h2 a {
+  color: var(--primary-dark);
+  transition: color 0.3s ease;
+}
+
+.list-item h2 a:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* Card grid layouts */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .card-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}

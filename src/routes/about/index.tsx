@@ -10,11 +10,10 @@ interface GitHubRepo {
   name: string; // Also not strictly needed here
 }
 
-export const useProficientTechnologies = routeLoader$<string[]>(async ({ cleanup }) => {
+export const useProficientTechnologies = routeLoader$<string[]>(async () => {
   const controller = new AbortController();
-  cleanup(() => controller.abort());
 
-  const res = await fetch('https://api.github.com/users/Jerry_wu/repos', {
+  const res = await fetch('https://api.github.com/users/JerryWu1234/repos', {
     signal: controller.signal,
     headers: {
       'Accept': 'application/vnd.github.v3+json',
@@ -53,40 +52,74 @@ export default component$(() => {
 
   return (
     <main>
-      <h1>About Me</h1>
-      <section>
+      <h1 class="slide-up">About Me</h1>
+      <section class="reveal">
+        <h2>Background</h2>
+        <p>I'm Jerry Wu, a passionate frontend developer with over 10 years of experience in the web development industry. I specialize in building high-performance, responsive web applications using modern JavaScript frameworks and libraries.</p>
+        <p>Throughout my career, I've worked with various companies ranging from startups to large enterprises, helping them create exceptional user experiences through clean, efficient code and intuitive interfaces.</p>
+      </section>
+      
+      <section class="reveal">
         <h2>Work Experience</h2>
-        <p>10 years</p>
+        <div class="experience-item card hover-lift reveal-left" style={{ animationDelay: '0.1s' }}>
+          <h3>Senior Frontend Developer - Tech Solutions Inc.</h3>
+          <p class="date">2020 - Present</p>
+          <ul>
+            <li class="stagger-item">Lead the frontend development team in building and maintaining multiple web applications</li>
+            <li class="stagger-item">Implemented performance optimizations that improved load times by 40%</li>
+            <li class="stagger-item">Established coding standards and best practices for the team</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item card hover-lift reveal" style={{ animationDelay: '0.3s' }}>
+          <h3>Frontend Developer - Web Innovations</h3>
+          <p class="date">2016 - 2020</p>
+          <ul>
+            <li class="stagger-item">Developed responsive web applications using React and Vue.js</li>
+            <li class="stagger-item">Collaborated with UX/UI designers to implement pixel-perfect interfaces</li>
+            <li class="stagger-item">Mentored junior developers and conducted code reviews</li>
+          </ul>
+        </div>
+        
+        <div class="experience-item card hover-lift reveal-right" style={{ animationDelay: '0.5s' }}>
+          <h3>Web Developer - Digital Creations</h3>
+          <p class="date">2013 - 2016</p>
+          <ul>
+            <li class="stagger-item">Built and maintained client websites using HTML, CSS, and JavaScript</li>
+            <li class="stagger-item">Implemented responsive designs and ensured cross-browser compatibility</li>
+            <li class="stagger-item">Worked with backend developers to integrate frontend with APIs</li>
+          </ul>
+        </div>
       </section>
-      <section>
+      
+      <section class="reveal">
+        <h2>Education</h2>
+        <p><strong>Bachelor of Science in Computer Science</strong> - University of Technology, 2013</p>
+      </section>
+      
+      <section class="reveal">
         <h2>Current Focus</h2>
-        <p>I'm currently focused on improving performance and DX in frontend architectures, especially with server-first frameworks.</p>
+        <p>I'm currently focused on improving performance and developer experience in frontend architectures, especially with server-first frameworks like Qwik and Next.js. I'm also exploring the potential of AI in web development and how it can enhance user experiences.</p>
+        <div style={{ marginTop: '1.5rem' }}>
+          <a href="mailto:409187100@qq.com" class="btn btn-primary btn-pulse">Contact Me</a>
+        </div>
       </section>
-      <section>
+      
+      <section class="reveal">
         <h2>Proficient Technologies</h2>
         {(() => {
-          // Check if the loader is still running (value is not yet resolved)
-          // Qwik's routeLoader$ doesn't have an explicit "loading" state in the signal itself
-          // like useResource$. Instead, the value is available once resolved.
-          // For a loading state, you'd typically use <Resource> or manage it manually if not using routeLoader directly for rendering.
-          // However, since routeLoader blocks rendering until data is ready (for SSR), 
-          // a "loading" state visible to the client might only flash briefly or not at all.
-          // For client-side navigation, Qwik handles this.
-          // For this example, we'll directly use the resolved value.
-          // If proficientTechnologiesSignal.value is not yet populated, it means it's loading or failed.
-          // The loader returns [] on failure, so length check covers this.
-
           const technologies = proficientTechnologiesSignal.value;
 
           if (technologies.length > 0) {
             return (
               <ul>
-                {technologies.map((lang) => <li key={lang}>{lang}</li>)}
+                {technologies.map((lang, index) => (
+                  <li key={lang} class="stagger-item hover-scale" style={{ animationDelay: `${0.1 * (index + 1)}s` }}>{lang}</li>
+                ))}
               </ul>
             );
           } else {
-            // This message covers both "no languages found" and "failed to fetch" (as loader returns [] on error)
-            return <p>Primary technologies will be listed here as they appear on public projects, or if GitHub data could not be fetched.</p>;
+            return <p class="fade-in">Primary technologies will be listed here as they appear on public projects, or if GitHub data could not be fetched.</p>;
           }
         })()}
       </section>

@@ -12,11 +12,10 @@ interface GitHubRepo {
 }
 
 export default component$(() => {
-  const reposResource = useResource$<GitHubRepo[]>(async ({ cleanup }) => {
+  const reposResource = useResource$<GitHubRepo[]>(async () => {
     const controller = new AbortController();
-    cleanup(() => controller.abort());
 
-    const res = await fetch('https://api.github.com/users/Jerry_wu/repos?sort=updated&direction=desc', {
+    const res = await fetch('https://api.github.com/users/JerryWu1234/repos?sort=updated&direction=desc', {
       signal: controller.signal,
       headers: { 
         'Accept': 'application/vnd.github.v3+json',
@@ -42,19 +41,25 @@ export default component$(() => {
 
   return (
     <main>
-      <h1>My Projects</h1>
+      <h1 class="slide-up">My Projects</h1>
+      <div class="reveal" style={{ marginBottom: '2rem' }}>
+        <p>Below are some of my public projects on GitHub. Feel free to explore and contribute!</p>
+        <a href="https://github.com/JerryWu1234" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-3d">
+          View All Projects on GitHub
+        </a>
+      </div>
       <Resource
         value={reposResource}
-        onPending={() => <p>Fetching projects...</p>}
-        onRejected={(error) => <p>Error fetching projects: {error.message}</p>}
+        onPending={() => <p class="fade-in">Fetching projects...</p>}
+        onRejected={(error) => <p class="fade-in">Error fetching projects: {error.message}</p>}
         onResolved={(repos) => (
           <>
             {repos.length > 0 ? (
-              <ul class="project-list"> {/* Added class for ul, global ul style already removes list-style and padding */}
-                {repos.map((repo) => (
-                  <li key={repo.id} class="list-item"> {/* Replaced inline style with class */}
+              <ul class="project-list">
+                {repos.map((repo, index) => (
+                  <li key={repo.id} class="list-item card hover-lift stagger-item" style={{ animationDelay: `${0.1 * (index + 1)}s` }}>
                     <h2>
-                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="hover-scale">
                         {repo.name}
                       </a>
                     </h2>
@@ -67,7 +72,7 @@ export default component$(() => {
                 ))}
               </ul>
             ) : (
-              <p>No public projects found on GitHub.</p>
+              <p class="fade-in">No public projects found on GitHub.</p>
             )}
           </>
         )}
