@@ -2,24 +2,22 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "ES2017",
-    "module": "ES2022",
-    "lib": ["es2022", "DOM", "WebWorker", "DOM.Iterable"],
+    "module": "ES2020",
+    "lib": ["es2020", "DOM"],
     "jsx": "react-jsx",
     "jsxImportSource": "@qwik.dev/core",
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
+    "declarationDir": "lib-types",
     "moduleResolution": "Bundler",
+    "declaration": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "incremental": true,
     "isolatedModules": true,
-    "outDir": "tmp",
-    "noEmit": true,
+    "types": ["vite/client"],
     "paths": {
-      "~/*": ["./src/*"]
+      "@devtools/kit": ["../kit/src/index.ts"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
-  "include": ["src", "./*.d.ts", "./*.config.ts"]
+  "include": ["src"]
 }

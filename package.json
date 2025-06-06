@@ -1,46 +1,73 @@
 {
-  "name": "my-qwik-empty-starter",
-  "description": "Blank project with routing included",
+  "name": "@devtools/ui",
+  "version": "1.1.0",
+  "description": "Qwik devtools package",
+  "main": "./lib/index.qwik.mjs",
+  "exports": {
+    ".": {
+      "import": "./lib/index.qwik.mjs"
+    }
+  },
+  "types": "./lib-types/ui/src/index.d.ts",
+  "files": [
+    "lib",
+    "lib-types"
+  ],
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
   },
-  "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "build": "qwik build",
-    "build.client": "vite build",
-    "build.preview": "vite build --ssr src/entry.preview.tsx",
-    "build.types": "tsc --incremental --noEmit",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
-    "dev": "vite --mode ssr",
+    "build.lib": "vite build --mode lib",
+    "build.types": "tsc --emitDeclarationOnly",
+    "dev:ssr": "vite --mode ssr",
+    "dev": "nodemon --watch src -e tsx,ts,css --exec 'npm run build'",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
-    "preview": "qwik build preview && vite preview --open",
+    "release": "np",
     "start": "vite --open --mode ssr",
+    "test": "echo \"No test specified\" && exit 0",
     "qwik": "qwik"
   },
+  "peerDependencies": {
+    "@qwik.dev/core": "^2.0.0-beta.1"
+  },
   "devDependencies": {
-    "@qwik.dev/core": "2.0.0-alpha.10",
-    "@qwik.dev/router": "2.0.0-alpha.10",
+    "@babel/generator": "^7.26.5",
+    "@babel/parser": "^7.26.7",
+    "@babel/traverse": "^7.26.7",
+    "@qwik.dev/react": "^2.0.0-beta.1",
     "@qwikest/icons": "^0.0.13",
     "@types/eslint": "8.56.10",
-    "@types/marked": "^6.0.0",
     "@types/node": "20.14.11",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
+    "autoprefixer": "^10.4.19",
+    "birpc": "^0.2.19",
+    "cpy-cli": "^5.0.0",
+    "dree": "^5.1.5",
     "eslint": "8.57.0",
-    "eslint-plugin-qwik": "2.0.0-alpha.10",
+    "eslint-plugin-qwik": "2.0.0-alpha.9",
+    "nodemon": "^3.1.9",
+    "np": "^8.0.4",
+    "postcss": "^8.4.39",
     "prettier": "3.3.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "react": "18.2.0",
+    "react-complex-tree": "^2.4.6",
+    "react-dom": "18.2.0",
+    "superjson": "^2.2.2",
+    "tailwindcss": "^3.4.6",
     "typescript": "5.4.5",
-    "undici": "*",
-    "vite": "5.3.5",
+    "vite": "^6.2.6",
+    "vite-hot-client": "2.0.4",
+    "vite-plugin-inspect": "^11.1.0",
     "vite-tsconfig-paths": "^4.2.1"
-  },
-  "dependencies": {
-    "marked": "^15.0.12",
-    "tsparticles-slim": "^2.12.0"
   }
 }
