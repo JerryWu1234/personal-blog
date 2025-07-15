@@ -1,0 +1,26 @@
+diff --git a/node_modules/@qwik.dev/core/dist/core.mjs b/node_modules/@qwik.dev/core/dist/core.mjs
+index 82db5f9..7e7c53d 100644
+--- a/node_modules/@qwik.dev/core/dist/core.mjs
++++ b/node_modules/@qwik.dev/core/dist/core.mjs
+@@ -1592,7 +1592,7 @@ const getStoreTarget = (value) => {
+ const unwrapStore = (value) => {
+     return getStoreTarget(value) || value;
+ };
+-const isStore = (value) => {
++export const isStore = (value) => {
+     return STORE_TARGET in value;
+ };
+ function createStore(container, obj, flags) {
+diff --git a/node_modules/@qwik.dev/core/dist/optimizer.mjs b/node_modules/@qwik.dev/core/dist/optimizer.mjs
+index 8bd6bb5..80863fe 100644
+--- a/node_modules/@qwik.dev/core/dist/optimizer.mjs
++++ b/node_modules/@qwik.dev/core/dist/optimizer.mjs
+@@ -23,6 +23,8 @@ var __commonJS = (cb, mod) => function() {
+   }).exports, mod), mod.exports;
+ };
+ 
++export {isStore} from "./core.mjs"
++
+ var __copyProps = (to, from, except, desc) => {
+   if (from && "object" === typeof from || "function" === typeof from) {
+     for (let key of __getOwnPropNames(from)) {

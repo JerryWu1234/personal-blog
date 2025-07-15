@@ -1,0 +1,63 @@
+var VNodeProps = /* @__PURE__ */ function(VNodeProps2) {
+  VNodeProps2[VNodeProps2["flags"] = 0] = "flags";
+  VNodeProps2[VNodeProps2["parent"] = 1] = "parent";
+  VNodeProps2[VNodeProps2["previousSibling"] = 2] = "previousSibling";
+  VNodeProps2[VNodeProps2["nextSibling"] = 3] = "nextSibling";
+  return VNodeProps2;
+}({});
+var VNodeFlags = /* @__PURE__ */ function(VNodeFlags2) {
+  VNodeFlags2[VNodeFlags2["Element"] = 1] = "Element";
+  VNodeFlags2[VNodeFlags2["Virtual"] = 2] = "Virtual";
+  VNodeFlags2[VNodeFlags2["ELEMENT_OR_VIRTUAL_MASK"] = 3] = "ELEMENT_OR_VIRTUAL_MASK";
+  VNodeFlags2[VNodeFlags2["ELEMENT_OR_TEXT_MASK"] = 5] = "ELEMENT_OR_TEXT_MASK";
+  VNodeFlags2[VNodeFlags2["TYPE_MASK"] = 7] = "TYPE_MASK";
+  VNodeFlags2[VNodeFlags2["INFLATED_TYPE_MASK"] = 15] = "INFLATED_TYPE_MASK";
+  VNodeFlags2[VNodeFlags2["Text"] = 4] = "Text";
+  VNodeFlags2[VNodeFlags2["Inflated"] = 8] = "Inflated";
+  VNodeFlags2[VNodeFlags2["Resolved"] = 16] = "Resolved";
+  VNodeFlags2[VNodeFlags2["Deleted"] = 32] = "Deleted";
+  VNodeFlags2[VNodeFlags2["NAMESPACE_MASK"] = 192] = "NAMESPACE_MASK";
+  VNodeFlags2[VNodeFlags2["NEGATED_NAMESPACE_MASK"] = -193] = "NEGATED_NAMESPACE_MASK";
+  VNodeFlags2[VNodeFlags2["NS_html"] = 0] = "NS_html";
+  VNodeFlags2[VNodeFlags2["NS_svg"] = 64] = "NS_svg";
+  VNodeFlags2[VNodeFlags2["NS_math"] = 128] = "NS_math";
+  return VNodeFlags2;
+}({});
+var ElementVNodeProps = /* @__PURE__ */ function(ElementVNodeProps2) {
+  ElementVNodeProps2[ElementVNodeProps2["firstChild"] = 4] = "firstChild";
+  ElementVNodeProps2[ElementVNodeProps2["lastChild"] = 5] = "lastChild";
+  ElementVNodeProps2[ElementVNodeProps2["element"] = 6] = "element";
+  ElementVNodeProps2[ElementVNodeProps2["elementName"] = 7] = "elementName";
+  ElementVNodeProps2[ElementVNodeProps2["PROPS_OFFSET"] = 8] = "PROPS_OFFSET";
+  return ElementVNodeProps2;
+}({});
+const DEBUG_TYPE = "q:type";
+const RENDER_TYPE = "q:renderFn";
+const ISDEVTOOL = "Qwikdevtools";
+var VirtualVNodeProps = /* @__PURE__ */ function(VirtualVNodeProps2) {
+  VirtualVNodeProps2[VirtualVNodeProps2["firstChild"] = 4] = "firstChild";
+  VirtualVNodeProps2[VirtualVNodeProps2["lastChild"] = 5] = "lastChild";
+  VirtualVNodeProps2[VirtualVNodeProps2["PROPS_OFFSET"] = 6] = "PROPS_OFFSET";
+  return VirtualVNodeProps2;
+}({});
+const Q_PROPS_SEPARATOR = ":";
+const QContainerAttr = "q:container";
+var QContainerValue = /* @__PURE__ */ function(QContainerValue2) {
+  QContainerValue2["PAUSED"] = "paused";
+  QContainerValue2["RESUMED"] = "resumed";
+  QContainerValue2["HTML"] = "html";
+  QContainerValue2["TEXT"] = "text";
+  return QContainerValue2;
+}({});
+export {
+  DEBUG_TYPE,
+  ElementVNodeProps,
+  ISDEVTOOL,
+  QContainerAttr,
+  QContainerValue,
+  Q_PROPS_SEPARATOR,
+  RENDER_TYPE,
+  VNodeFlags,
+  VNodeProps,
+  VirtualVNodeProps
+};

@@ -1,5 +1,6 @@
-import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { component$} from "@qwik.dev/core";
+import type { DocumentHead } from "@qwik.dev/router";
+import { ModalExample } from "~/components/modal/modal-example";
 
 export default component$(() => {
   return (
@@ -9,6 +10,7 @@ export default component$(() => {
         Can't wait to see what you build with qwik!
         <br />
         Happy coding.
+        <ModalExample />
       </div>
     </>
   );

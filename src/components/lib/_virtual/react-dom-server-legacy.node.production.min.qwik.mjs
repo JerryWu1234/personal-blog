@@ -1,0 +1,4 @@
+var reactDomServerLegacy_node_production_min = {};
+export {
+  reactDomServerLegacy_node_production_min as __exports
+};
