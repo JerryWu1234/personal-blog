@@ -1,358 +1,47 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101b32">
-  <meta name="description" content="Resume of Wu — Senior Frontend Engineer and Forward Deployed Engineer (FDE), focused on frontend platforms, AI engineering automation, and cross-functional delivery.">
-  <meta property="og:title" content="Wu | Senior Frontend Engineer · FDE">
-  <meta property="og:description" content="Frontend engineering, AI-driven development automation, and end-to-end technical delivery.">
-  <title>Wu — Senior Frontend Engineer · FDE</title>
-  <style>
-    :root {
-      --ink: #17233b;
-      --muted: #64718a;
-      --navy: #101b32;
-      --blue: #315bd6;
-      --cyan: #55c5c2;
-      --paper: #f4f6fa;
-      --line: #e3e8f0;
-      --white: #fff;
-      --shadow: 0 18px 50px rgba(22, 38, 68, .08);
-      --radius: 20px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-    body {
-      margin: 0; background: var(--paper); color: var(--ink);
-      font: 16px/1.68 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; }
-    .topbar {
-      position: sticky; top: 0; z-index: 20; background: rgba(16,27,50,.94);
-      backdrop-filter: blur(14px); color: white; border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .nav { max-width: 1120px; margin: auto; padding: 0 28px; min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { font-weight: 750; letter-spacing: .02em; text-decoration: none; white-space: nowrap; }
-    .navlinks { display: flex; align-items: center; gap: 24px; }
-    .navlinks a { color: #d9e1f1; text-decoration: none; font-size: 13px; transition: color .2s; }
-    .navlinks a:hover { color: white; }
-    .navlinks .download { background: white; color: var(--navy); padding: 9px 15px; border-radius: 999px; font-weight: 700; }
-    .menu { display: none; color: white; border: 1px solid rgba(255,255,255,.3); background: transparent; border-radius: 10px; padding: 8px 11px; }
-    .hero { background: radial-gradient(circle at 85% 15%, rgba(85,197,194,.22), transparent 28%), linear-gradient(125deg, #101b32 0%, #172b52 62%, #244b85 100%); color: white; overflow: hidden; }
-    .hero-inner { max-width: 1120px; margin: auto; padding: 86px 28px 78px; display: grid; grid-template-columns: 1.5fr .8fr; align-items: center; gap: 56px; }
-    .eyebrow { color: #9fe2df; text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 800; }
-    h1 { font-size: clamp(42px, 6vw, 68px); line-height: 1.04; letter-spacing: -.045em; margin: 17px 0 16px; }
-    .role { color: #d6e2f6; font-size: clamp(17px, 2vw, 22px); font-weight: 550; }
-    .intro { max-width: 680px; color: #c1cde0; margin: 22px 0 28px; font-size: 16px; }
-    .contact { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; color: #d7e1f0; font-size: 14px; }
-    .contact a { text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 999px; padding: 12px 19px; font-size: 14px; font-weight: 750; text-decoration: none; transition: transform .2s, box-shadow .2s; }
-    .button:hover { transform: translateY(-2px); }
-    .button.primary { color: var(--navy); background: white; box-shadow: 0 10px 24px rgba(0,0,0,.14); }
-    .button.secondary { color: white; border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.06); }
-    .hero-card { justify-self: end; width: min(100%, 300px); border: 1px solid rgba(255,255,255,.18); border-radius: 24px; padding: 25px; background: rgba(255,255,255,.08); box-shadow: 0 25px 65px rgba(0,0,0,.15); }
-    .hero-card .big { font-size: 42px; font-weight: 800; line-height: 1; letter-spacing: -.05em; }
-    .hero-card .small { color: #c3d3e9; font-size: 13px; margin-top: 8px; }
-    .hero-card hr { border: 0; border-top: 1px solid rgba(255,255,255,.18); margin: 21px 0; }
-    .focus-list { display: grid; gap: 12px; margin-top: 18px; }
-    .focus-item { display: flex; align-items: center; gap: 10px; color: #e4ecf7; font-size: 13px; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); flex: 0 0 7px; }
-    main { max-width: 1120px; margin: auto; padding: 0 28px 76px; }
-    section { margin-top: 62px; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
-    .section-kicker { color: var(--blue); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; }
-    h2 { font-size: clamp(27px, 3vw, 35px); line-height: 1.15; letter-spacing: -.035em; margin: 7px 0 0; }
-    .section-note { color: var(--muted); font-size: 13px; }
-    .summary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .summary-card, .experience, .project, .education-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .summary-card { padding: 23px 24px; }
-    .summary-card h3 { font-size: 15px; margin: 0 0 7px; }
-    .summary-card p { color: var(--muted); font-size: 14px; margin: 0; }
-    .timeline { display: grid; gap: 18px; }
-    .experience { padding: 26px 28px; }
-    .item-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 16px; }
-    .item-head h3 { margin: 0; font-size: 19px; letter-spacing: -.02em; }
-    .item-sub { color: var(--muted); font-size: 13px; margin-top: 3px; }
-    .date { color: var(--blue); font-size: 13px; font-weight: 750; white-space: nowrap; }
-    .bullets { margin: 0; padding-left: 19px; }
-    .bullets li { padding-left: 4px; margin: 9px 0; color: #4f5d75; font-size: 14px; }
-    .bullets strong { color: var(--ink); }
-    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
-    .tag { background: #eef3ff; color: #3152a4; border: 1px solid #e1e9ff; padding: 4px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; }
-    .projects { display: grid; gap: 18px; }
-    .project { padding: 28px; }
-    .project-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
-    .project-title h3 { margin: 0; font-size: 20px; line-height: 1.3; letter-spacing: -.025em; }
-    .project-role { color: var(--blue); font-size: 12px; font-weight: 750; margin-top: 5px; }
-    .project-date { color: var(--muted); font-size: 12px; white-space: nowrap; }
-    .project-block { margin-top: 20px; }
-    .project-block h4 { margin: 0 0 7px; color: var(--ink); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
-    .project-block p { margin: 0; color: #5c6980; font-size: 14px; }
-    .workflow { background: #f5f7fb; border-radius: 12px; padding: 13px 15px; color: #40516d !important; font-size: 13px !important; }
-    .project-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 17px; }
-    .project-links a { color: var(--blue); text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 1px solid #cbd7fa; }
-    .project-links a:hover { border-color: var(--blue); }
-    .education-card { padding: 24px 27px; display: flex; justify-content: space-between; gap: 20px; }
-    .education-card h3 { margin: 0; font-size: 17px; }
-    .education-card p { color: var(--muted); margin: 5px 0 0; font-size: 13px; }
-    .footer { background: var(--navy); color: #c8d4e6; padding: 35px 28px; text-align: center; font-size: 13px; }
-    .footer strong { color: white; }
-    .footer a { color: white; }
-    .backtop { display: inline-block; margin-top: 12px; color: #9fe2df !important; text-decoration: none; }
-    @media (max-width: 760px) {
-      .nav { padding: 0 18px; min-height: 62px; }
-      .menu { display: inline-flex; }
-      .navlinks { display: none; position: absolute; top: 62px; left: 0; right: 0; padding: 16px 20px 20px; background: var(--navy); flex-direction: column; align-items: stretch; gap: 14px; border-bottom: 1px solid rgba(255,255,255,.12); }
-      .navlinks.open { display: flex; }
-      .navlinks .download { text-align: center; }
-      .hero-inner { grid-template-columns: 1fr; padding: 64px 20px 55px; gap: 32px; }
-      .hero-card { justify-self: stretch; width: 100%; }
-      main { padding: 0 18px 55px; }
-      section { margin-top: 48px; }
-      .summary-grid { grid-template-columns: 1fr; }
-      .experience, .project { padding: 22px 20px; }
-      .item-head, .project-title { flex-direction: column; gap: 5px; }
-      .date, .project-date { white-space: normal; }
-      .education-card { flex-direction: column; }
-    }
-    @media print {
-      @page { size: A4; margin: 14mm; }
-      body { background: white; font-size: 10pt; }
-      .topbar, .hero-actions, .backtop { display: none !important; }
-      .hero { background: white; color: var(--ink); }
-      .hero-inner { display: block; padding: 0 0 20px; }
-      .role, .intro, .contact, .hero-card .small, .focus-item { color: #4f5d75; }
-      .hero-card { display: none; }
-      main { padding: 0; }
-      section { margin-top: 24px; break-inside: auto; }
-      .summary-card, .experience, .project, .education-card { box-shadow: none; break-inside: avoid; }
-      .experience, .project { padding: 15px; }
-      a { text-decoration: none; }
-      .footer { background: white; color: #555; padding: 18px 0; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Wu - Senior Full-Stack Engineer / Tech Lead. Frontend, AI engineering automation, intelligent cockpit systems, and open-source contributions.">
+<meta property="og:title" content="Wu | Senior Full-Stack Engineer / Tech Lead">
+<title>Wu | Senior Full-Stack Engineer / Tech Lead</title>
+<style>
+:root{--ink:#16233a;--muted:#5d6a7c;--accent:#15668a;--line:#dce3e9;--paper:#f8fafc;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif}
+a{color:var(--accent)}.nav{background:#17283e;color:#fff}.nav-inner{max-width:1040px;margin:auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav a{color:#edf3f6;text-decoration:none;font-size:13px}.nav-logo{font-size:18px!important;font-weight:800;letter-spacing:.05em}.links{display:flex;gap:19px;align-items:center;flex-wrap:wrap}.links .pdf{background:#fff;color:#14253b;padding:7px 12px;border-radius:6px;font-weight:650}
+main{max-width:1040px;margin:auto;padding:0 26px 70px}.hero{padding:55px 0 33px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--accent);font-size:12px;text-transform:uppercase;font-weight:750;letter-spacing:.13em}
+h1{font-size:48px;margin:9px 0 2px;letter-spacing:-.035em;line-height:1.12}.role{font-size:23px;font-weight:650;margin:3px 0 20px}.contact{display:flex;gap:10px 22px;flex-wrap:wrap;color:var(--muted);font-size:14px}.contact a{text-decoration:none}
+.intro{margin:23px 0 0;max-width:850px;font-size:16px;line-height:1.7;color:#384b63}
+.metrics{display:flex;flex-wrap:wrap;gap:26px;margin-top:20px;color:#47586b;font-size:14px}.metrics strong{color:var(--ink)}
+section.content{padding-top:40px}h2{font-size:24px;line-height:1.2;margin:0 0 18px;padding-bottom:11px;border-bottom:2px solid var(--line)}
+h3{font-size:18px;line-height:1.3;margin:0}.record{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:23px 26px;margin-bottom:16px}
+.record-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.record-role{color:var(--muted);margin-top:4px;font-size:13px}.date{color:var(--muted);font-size:13px;white-space:nowrap}
+.bullets{padding-left:19px;margin:12px 0 0}.bullets li{margin:8px 0;color:#38485c}.bullets strong{color:#192d44}.intro-list p{margin:0 0 11px;color:#38485c}
+.project .overview{color:#34465c;margin:14px 0}.project h4{margin:16px 0 6px;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.workflow{background:#f2f6f9;border-left:3px solid var(--accent);padding:12px 15px;color:#30465f;font-size:13px;line-height:1.7}
+.outcomes{background:#f8fafb;padding:12px 17px;border:1px solid #edf0f2;border-radius:6px}.outcomes ul{margin-top:0}
+.opensource-stat{font-size:15px;font-weight:700;color:var(--accent);margin:0 0 15px}
+.footer{padding:24px 26px;text-align:center;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.footer a{text-decoration:none}
+@media(max-width:760px){.nav-inner{align-items:flex-start;flex-direction:column}.links{gap:11px 16px}main{padding:0 17px 45px}.hero{padding:32px 0 23px}h1{font-size:39px}.role{font-size:19px}.record{padding:18px 17px}.record-head{flex-direction:column;gap:4px}.date{white-space:normal}h2{font-size:21px}}
+@media print{body{background:white;font-size:11px}.nav,.footer{display:none}main{max-width:none;padding:0}.hero{padding:0 0 16px}section.content{padding-top:22px}.record{border:0;border-bottom:1px solid #ddd;padding:12px 0;break-inside:avoid}.workflow,.outcomes{background:white}.project{break-inside:auto}a{text-decoration:none;color:#244f70}h1{font-size:35px}h2{font-size:18px}h3{font-size:15px}}
+</style>
 </head>
-<body id="top">
-  <header class="topbar">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="#top">WU<span style="color:var(--cyan)">.</span></a>
-      <button class="menu" id="menuButton" aria-expanded="false" aria-controls="navLinks">Menu</button>
-      <div class="navlinks" id="navLinks">
-        <a href="#summary">Summary</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a class="download" href="assets/resume.pdf" download="Wu_Senior_Frontend_FDE_Resume_EN.pdf" type="application/pdf">Download PDF ↓</a>
-      </div>
-    </nav>
-  </header>
-
-  <section class="hero" aria-labelledby="name">
-    <div class="hero-inner">
-      <div>
-        <div class="eyebrow">Frontend Engineering · AI · Technical Delivery</div>
-        <h1 id="name">Wu</h1>
-        <div class="role">Senior Frontend Engineer <span style="color:var(--cyan)">/</span> Forward Deployed Engineer (FDE)</div>
-        <p class="intro">Frontend-focused engineer with backend experience, building practical AI-enabled engineering workflows, developer tools, and cross-platform products. Experienced in turning business and engineering problems into shipped technical solutions.</p>
-        <div class="contact">
-          <span>Shanghai, China</span>
-          <span>·</span>
-          <a href="tel:+8615057769636">+86 150 5776 9636</a>
-          <span>·</span>
-          <span>11 years of professional experience</span>
-        </div>
-        <div class="hero-actions">
-          <a class="button primary" href="assets/resume.pdf" target="_blank" rel="noopener">View full PDF resume ↗</a>
-          <a class="button secondary" href="#experience">Explore experience ↓</a>
-        </div>
-      </div>
-      <aside class="hero-card" aria-label="Professional focus">
-        <div class="big">11<span style="color:var(--cyan)">+</span></div>
-        <div class="small">Years of professional experience</div>
-        <hr>
-        <div class="eyebrow">Core focus</div>
-        <div class="focus-list">
-          <div class="focus-item"><span class="dot"></span>Frontend platforms & architecture</div>
-          <div class="focus-item"><span class="dot"></span>AI engineering automation</div>
-          <div class="focus-item"><span class="dot"></span>Full-stack integration & BFF</div>
-          <div class="focus-item"><span class="dot"></span>Cross-team technical delivery</div>
-          <div class="focus-item"><span class="dot"></span>Developer tools & open source</div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <main>
-    <section id="summary">
-      <div class="section-head"><div><div class="section-kicker">01 / Profile</div><h2>Professional Summary</h2></div><div class="section-note">What I build and how I work</div></div>
-      <div class="summary-grid">
-        <article class="summary-card"><h3>Frontend & Full-stack Engineering</h3><p>Frontend-focused software engineer with backend development experience, contributing to UI libraries, Astro, and the Qwik ecosystem.</p></article>
-        <article class="summary-card"><h3>AI Solutions & Engineering Automation</h3><p>Plans and builds AI-enabled workflows around real engineering needs, from solution design and implementation to technical demos, internal enablement, and adoption.</p></article>
-        <article class="summary-card"><h3>Product & Delivery Leadership</h3><p>Experience across B2B and B2C automotive cockpit programs, coordinating technical solutions, engineering resources, and end-to-end delivery.</p></article>
-        <article class="summary-card"><h3>Architecture & Cost Optimization</h3><p>Leads infrastructure reviews and cost analysis, then drives practical resource optimization across services and cloud environments.</p></article>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="section-head"><div><div class="section-kicker">02 / Career</div><h2>Professional Experience</h2></div></div>
-      <div class="timeline">
-        <article class="experience">
-          <div class="item-head"><div><h3>Great Wall Motor Co., Ltd.</h3><div class="item-sub">Full-Stack Engineer · Intelligent Cockpit & AI Engineering</div></div><div class="date">Mar 2020 – Present</div></div>
-          <ul class="bullets">
-            <li><strong>Product engineering and delivery:</strong> Led a six-person team delivering mobile and in-vehicle intelligent-cockpit experiences. Built an SVG-based visual IoT workflow editor connecting in-vehicle hardware with automated scenarios; supported the overall product as its user base grew from launch to approximately 2 million.</li>
-            <li><strong>AI solution delivery:</strong> Worked directly with engineering, product, and project teams to identify development bottlenecks. Independently designed and developed AI-assisted engineering workflows, a project knowledge assistant, and an after-sales feedback bot; drove adoption across frontend/backend teams and business units, covering approximately 30 projects.</li>
-            <li><strong>AI-assisted defect analysis:</strong> Combined multimodal feedback, logs, and code context for cross-platform diagnosis and unattended overnight execution. Based on operational estimates, AI can analyze and localize roughly 30%–40% of reported issues and propose fixes; some issues also support automated code changes.</li>
-            <li><strong>Release and quality governance:</strong> Established traceability from requirements and defects to code changes and release versions. Defined each release scope and used code reviews, regression testing, and GitLab CI/CD to manage quality.</li>
-            <li><strong>Cloud and architecture optimization:</strong> Advanced micro-frontend adoption and service consolidation; migrated appropriate static services to Tencent Cloud COS and CDN, decommissioned redundant compute, and reduced server instances for the frontend systems under my scope by roughly 25%. Built a container-isolated environment using OpenSandbox.</li>
-            <li><strong>Open-source contribution and technical advocacy:</strong> Contributed Qwik bug fixes and DevTools features, as well as code to Astro and UI libraries; delivered company-wide presentations on AI technologies and shared practices across teams.</li>
-          </ul>
-          <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">Vue</span><span class="tag">Node.js</span><span class="tag">AI Agents</span><span class="tag">MCP</span><span class="tag">GitLab CI/CD</span><span class="tag">OpenSandbox</span></div>
-        </article>
-        <article class="experience">
-          <div class="item-head"><div><h3>Shanghai Junzheng Network Technology Co., Ltd. (Hello)</h3><div class="item-sub">Web Frontend Engineer</div></div><div class="date">Dec 2018 – Mar 2020</div></div>
-          <ul class="bullets">
-            <li><strong>Enterprise web development:</strong> Maintained and enhanced the supply-chain management application using Vue and Element UI; delivered complex business features and reusable business components.</li>
-            <li><strong>Frontend-to-BFF development:</strong> Extended frontend work to Node.js BFF services, using Koa, Koa Router, gRPC, and GraphQL to integrate Java backends and develop selected APIs for business-data aggregation and orchestration.</li>
-            <li><strong>GraphQL service integration:</strong> Developed GraphQL endpoints on the company’s existing Apollo Server platform and combined internal and third-party data sources for business workflows.</li>
-            <li><strong>Architecture and quality practices:</strong> Developed modules in a micro-frontend environment; participated in early automated page-configuration work and applied TDD selectively to business features toward the end of the project.</li>
-            <li><strong>Business collaboration:</strong> Contributed to requirement analysis and technical solution refinement, coordinated with product and backend engineers, and drove feature iterations to completion.</li>
-          </ul>
-          <div class="tag-row"><span class="tag">Vue</span><span class="tag">Element UI</span><span class="tag">Koa</span><span class="tag">gRPC</span><span class="tag">GraphQL</span><span class="tag">Micro-frontends</span><span class="tag">TDD</span></div>
-        </article>
-        <article class="experience">
-          <div class="item-head"><div><h3>Shanghai Junxue Investment Management Co., Ltd. (Junxue China)</h3><div class="item-sub">Web Frontend Engineer</div></div><div class="date">Oct 2017 – Oct 2018</div></div>
-          <ul class="bullets">
-            <li><strong>Mobile web applications:</strong> Developed H5 course, marketing-campaign, and storefront features using Vue.js, ES6, and Mint UI; translated UI designs into interactive mobile web pages for WeChat channels.</li>
-            <li><strong>Responsive layout and mobile compatibility:</strong> Designed and implemented a vw/vh-based adaptation strategy covering different screen sizes, iOS nested scrolling, scrolling-container behavior, and touch-through issues with overlays.</li>
-            <li><strong>Dynamic campaign pages:</strong> Contributed to a web administration system that dynamically configured H5 marketing campaign pages, supporting reusable page setups and flexible content.</li>
-            <li><strong>WeChat ecosystem:</strong> Worked on courses, campaigns, and commerce features for WeChat Mini Programs, Official Accounts, and H5 sites.</li>
-          </ul>
-          <div class="tag-row"><span class="tag">Vue.js</span><span class="tag">ES6</span><span class="tag">Mint UI</span><span class="tag">H5</span><span class="tag">Responsive Design</span></div>
-        </article>
-        <article class="experience">
-          <div class="item-head"><div><h3>Zhejiang Canaan Technology Co., Ltd.</h3><div class="item-sub">Web Frontend Engineer</div></div><div class="date">Mar 2017 – Oct 2017</div></div>
-          <ul class="bullets">
-            <li><strong>Requirements and implementation:</strong> Gathered requirements from business stakeholders and delivered functional web pages using HTML and CSS.</li>
-            <li><strong>Java backend integration:</strong> Used Ajax to call Java service APIs, exchange business data, and troubleshoot frontend/backend integration.</li>
-            <li><strong>Functional QA:</strong> Assisted with system-wide functional testing and validated key workflows, reporting defects and supporting delivery quality.</li>
-          </ul>
-          <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Ajax</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="section-head"><div><div class="section-kicker">03 / Selected Work</div><h2>Projects & Technical Contributions</h2></div><div class="section-note">Business impact · Architecture · Implementation</div></div>
-      <div class="projects">
-        <article class="project">
-          <div class="project-title"><div><h3>AI Project Digital Twin & Knowledge Collaboration Platform</h3><div class="project-role">Project Lead</div></div><div class="project-date">Jul 2026 – Present</div></div>
-          <div class="project-block"><h4>Project Objective</h4><p>Address frequent cross-project meetings, fragmented information, and costly manual updates in automotive R&D by consolidating meeting summaries and project knowledge into a shared, searchable AI knowledge base with natural-language Q&amp;A and collaboration functions.</p></div>
-          <div class="project-block"><h4>Core Workflow</h4><p class="workflow">Collect project meeting summaries → Organize knowledge → Mention the DingTalk bot in a group chat → Query the knowledge base or invoke an MCP tool → Return project answers or Jira data, or execute an authorized action.</p></div>
-          <div class="project-block"><h4>Key Responsibilities & Technical Solutions</h4><ul class="bullets">
-            <li><strong>Problem discovery and solution design:</strong> Designed an AI knowledge service centered on a project knowledge base and DingTalk bot to replace repeated manual status updates with on-demand retrieval.</li>
-            <li><strong>Knowledge-base development:</strong> Organized meeting notes and project information into a shared knowledge base accessible through natural-language queries.</li>
-            <li><strong>Chatbot and system integration:</strong> Implemented the interface connecting a DingTalk bot to the knowledge service, supporting group mentions, backend retrieval, and conversational responses.</li>
-            <li><strong>MCP and task collaboration:</strong> Integrated MCP tools with Jira for issue and task lookup, task assignment, and direct notifications to designated people, extending the bot beyond Q&amp;A to workflow operations.</li>
-            <li><strong>Cross-project adoption:</strong> Promoted use of the project assistant across multiple engineering projects and teams.</li>
-          </ul></div>
-          <div class="project-block"><h4>Project Outcomes</h4><ul class="bullets"><li>Deployed to multiple projects and adopted by multiple teams as a shared entry point for engineering knowledge and collaboration.</li><li>Made meeting decisions and project information searchable, reducing dependence on repetitive manual questions and updates.</li><li>Enabled project knowledge retrieval, Jira issue lookup, task assignment, and personnel notifications from the same DingTalk interface.</li></ul></div>
-          <div class="tag-row"><span class="tag">AI Knowledge Base</span><span class="tag">MCP</span><span class="tag">DingTalk</span><span class="tag">Jira</span><span class="tag">API Integration</span></div>
-        </article>
-        <article class="project">
-          <div class="project-title"><div><h3>AI-Powered Engineering Lifecycle Automation Platform</h3><div class="project-role">AI Engineer</div></div><div class="project-date">Jan 2026 – Present</div></div>
-          <div class="project-block"><h4>Project Objective</h4><p>Connect defect tracking, code changes, testing, and releases through a single platform to support AI-driven automation across the engineering lifecycle.</p></div>
-          <div class="project-block"><h4>Core Workflow</h4><p class="workflow">Jira requirement / bug → Linked repository and branch → AI diagnosis and fix plan → Human approval in DingTalk → AI code changes and testing → Human MR review and merge → QA acceptance → Manually triggered production release.</p></div>
-          <div class="project-block"><h4>Key Responsibilities & Technical Contributions</h4><ul class="bullets">
-            <li><strong>Stakeholder engagement and end-to-end design:</strong> Worked directly with engineering, product, and project teams to identify pain points in cross-platform diagnosis, fragmented development systems, and repetitive handoffs. Independently designed a solution combining a unified entry point, AI diagnosis and remediation, human decision gates, and automated verification. Integrated Jira, GitLab, test, and release systems via APIs while preserving their existing storage models and traceability across issues, code, and versions.</li>
-            <li><strong>Complex analysis and technical implementation:</strong> Independently architected and built the TypeScript, Node.js, and Fastify platform. Exposed PRD/Wiki materials as an MCP knowledge service, used a smaller model to retrieve business context, and ported RLM-style long-context processing from a Python implementation to TypeScript. With LangChain, orchestrated a primary agent and specialist agents for H5, cloud, and in-vehicle systems to inspect logs and source code; the primary agent verifies conclusions against the original error and explicitly reports inconclusive findings.</li>
-            <li><strong>Delivery safeguards and adoption:</strong> Introduced DingTalk approval before AI code changes, followed by ESLint, smoke, and E2E tests. Failed checks trigger iterative fixes for at most 30 minutes before escalation to an engineer. Passing changes become merge requests, with human review, merge, QA acceptance, and production-release gates retained. Promoted the system through cross-team sessions and company presentations; the complete flow has been adopted by roughly 30 internal projects. Based on usage estimates, approximately 30%–40% of defects are fixed by AI and subsequently reviewed and merged by engineers; approved tasks can execute unattended overnight.</li>
-          </ul></div>
-          <div class="tag-row"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Fastify</span><span class="tag">LangChain</span><span class="tag">MCP</span><span class="tag">Multi-agent</span><span class="tag">E2E</span></div>
-        </article>
-        <article class="project">
-          <div class="project-title"><div><h3>Intelligent Cockpit Visual Skill Orchestration System</h3><div class="project-role">Project Lead</div></div><div class="project-date">Apr 2020 – Present</div></div>
-          <div class="project-block"><h4>Project Objective</h4><p>Enable users to create personalized in-car automation by composing triggers, conditions, and vehicle actions rather than relying only on predefined manufacturer scenarios.</p></div>
-          <div class="project-block"><h4>Core Workflow</h4><p class="workflow">Configure triggers, conditions, and actions in an H5 visual canvas → Save rules to the cloud → Deliver them to the vehicle → Execute actions when the conditions are met.</p></div>
-          <div class="project-block"><h4>Key Responsibilities & Technical Solutions</h4><ul class="bullets">
-            <li><strong>Product delivery:</strong> Owned H5 implementation and contributed to the internal management application, coordinating with product, design, vehicle software, cloud, and QA teams to deliver configuration, hardware integration, and releases.</li>
-            <li><strong>Low-code-style dynamic UI rendering:</strong> Led the design and development of a configuration-driven rendering mechanism and reusable base components. Hierarchical configuration describes each atomic capability’s interface; the management platform maintains the configuration and the H5 application renders it dynamically. Existing capabilities generally require no H5 code changes or release for configuration updates; new hardware capabilities still require vehicle-side engineering.</li>
-            <li><strong>Visual orchestration and cross-platform integration:</strong> Independently developed the H5 pages and initially worked on an SVG-based free-form canvas for composing triggers, conditions, and actions. Integrated with the established vehicle/cloud rules flow, supporting 600+ hardware-related atomic capabilities and their configuration interfaces.</li>
-            <li><strong>Production feedback and issue resolution:</strong> Triaged after-sales feedback and mobile compatibility/runtime issues through on-device debugging, proposed feasible fixes, tracked defects into scheduled releases, and coordinated validation and rollout according to priority and capacity.</li>
-          </ul></div>
-          <div class="project-block"><h4>Project Outcomes</h4><ul class="bullets"><li>Contributed to the delivery of the broader intelligent-cockpit product as it scaled from launch to approximately 2 million total users; this is the overall product audience, not usage of the custom-skill feature alone.</li><li>Used configuration-driven interfaces to support 600+ atomic capabilities, reducing repetitive per-capability UI development and enabling faster introduction of new capabilities.</li><li>Delivered a complete path from visual workflow configuration and cloud storage to conditional execution of automation in vehicles.</li></ul></div>
-          <div class="tag-row"><span class="tag">Vue</span><span class="tag">SVG</span><span class="tag">H5</span><span class="tag">Dynamic Rendering</span><span class="tag">IoT</span><span class="tag">Automotive</span></div>
-        </article>
-        <article class="project">
-          <div class="project-title"><div><h3>Open-Source Frontend Frameworks & Developer Tools</h3><div class="project-role">Open-Source Contributor / Developer Tooling</div></div><div class="project-date">Mar 2019 – Present</div></div>
-          <div class="project-block"><h4>Project Objective</h4><p>Contribute to frontend frameworks, UI libraries, and developer tools, addressing rendering reliability, server-side execution, build systems, performance insights, and developer experience through upstream collaboration.</p></div>
-          <div class="project-block"><h4>Contribution Workflow</h4><p class="workflow">Investigate and reproduce GitHub issues → Inspect source and design fixes → Implement and test → Submit pull requests → Address community code review → Merge upstream.</p></div>
-          <div class="project-block"><h4>Key Responsibilities & Technical Solutions</h4><ul class="bullets">
-            <li><strong>Vue 3 library (Element3):</strong> Developed and maintained Vue 3 UI components using TDD practices, including MessageBox, Menu, and Tag. Fixed compatibility and interaction behavior and independently set up library scaffolding with ESLint, commit constraints, Markdown documentation compilation, and Serverless deployment.</li>
-            <li><strong>SSR framework (Astro):</strong> Investigated SSR, routing, component rendering, and build issues. Fixed missing CSS/JS assets with async components, Fragment Slot rendering, Vue async-component hydration, and mixed SSR/SSG routing. Contributed the <code>compressHTML</code> compiler option and related automated tests.</li>
-            <li><strong>Framework runtime and tooling (Qwik):</strong> Contributed to Qwik/Qwik City request context, Vite integration, ESLint rules, routing, and runtime behavior. Used AsyncLocalStorage for request-scoped locale context and improved development plugin behavior, component issues, and ESLint 8/9 compatibility.</li>
-            <li><strong>Developer tooling (Qwik DevTools):</strong> Developed page inspection, component render-tree views, performance metrics, build analysis, and dependency search/install/update features using Vite plugins, RPC communication, and source analysis. Supported migration and integration from the standalone DevTools repository into the Qwik monorepo.</li>
-          </ul></div>
-          <div class="project-block"><h4>Project Outcomes</h4><ul class="bullets"><li>Contributed merged fixes and enhancements across UI components, SSR/SSG, framework runtime, build tooling, and developer tools.</li><li>Helped deliver debugging, performance, and build-analysis capabilities later integrated into the Qwik repository.</li><li>Improved framework compatibility and developer workflows through source-level investigation, tests, and upstream code review.</li></ul></div>
-          <div class="project-links">
-            <a href="https://github.com/withastro/astro/pull/6706" target="_blank" rel="noopener">Astro · HTML compression</a>
-            <a href="https://github.com/withastro/astro/pull/7062" target="_blank" rel="noopener">Astro · SSR assets</a>
-            <a href="https://github.com/QwikDev/qwik/pull/7826" target="_blank" rel="noopener">Qwik · Request context</a>
-            <a href="https://github.com/QwikDev/qwik/pull/7072" target="_blank" rel="noopener">Qwik · ESLint compatibility</a>
-            <a href="https://github.com/QwikDev/devtools/pull/79" target="_blank" rel="noopener">Qwik DevTools · Performance</a>
-            <a href="https://github.com/hug-sun/element3/pull/217" target="_blank" rel="noopener">Element3 · MessageBox</a>
-          </div>
-          <div class="tag-row"><span class="tag">Vue 3</span><span class="tag">Astro</span><span class="tag">Qwik</span><span class="tag">Vite</span><span class="tag">SSR/SSG</span><span class="tag">ESLint</span><span class="tag">DevTools</span></div>
-        </article>
-        <article class="project">
-          <div class="project-title"><div><h3>BPM Supply Chain Management Platform</h3><div class="project-role">Web Frontend Developer</div></div><div class="project-date">Dec 2018 – Mar 2020</div></div>
-          <div class="project-block"><h4>Project Objective</h4><p>Support internal teams and manufacturing suppliers with an online supply-chain platform covering supplier records, shared-bicycle materials, warehouse inbound/outbound movements, and shipments.</p></div>
-          <div class="project-block"><h4>Core Workflow</h4><p class="workflow">Manage supplier and material records → Process inventory receipts, dispatches, and shipments → Integrate backend services → Query and manage business data.</p></div>
-          <div class="project-block"><h4>Key Responsibilities & Technical Solutions</h4><ul class="bullets">
-            <li><strong>Application development and maintenance:</strong> Maintained and extended an established Vue/Element UI supply-chain application within the company’s micro-frontend architecture, delivering supplier, material, and inventory features and reusable components.</li>
-            <li><strong>Node.js BFF APIs:</strong> Developed and maintained selected interfaces using Koa, Koa Router, gRPC, and GraphQL to transform, aggregate, and orchestrate data from Java backend services for frontend workflows.</li>
-            <li><strong>GraphQL integration:</strong> Built business APIs on the company’s existing Apollo Server platform and connected third-party services to support data orchestration.</li>
-            <li><strong>Engineering and quality practices:</strong> Contributed reusable components and early page automation configuration; selectively used TDD in business features later in the project.</li>
-            <li><strong>Collaboration and delivery:</strong> Refined solution designs with stakeholders, coordinated issues and delivery schedules, and supported ongoing business releases.</li>
-          </ul></div>
-          <div class="project-block"><h4>Project Outcomes</h4><ul class="bullets"><li>Maintained and delivered enhancements for supplier, material, inventory, and shipment workflows used by internal teams and factory suppliers.</li><li>Integrated Java and third-party sources through Node.js BFF/GraphQL APIs to give frontend modules a consistent way to access business data.</li><li>Built experience with reusable enterprise components, micro-frontend modules, configurable pages, and selective TDD practices.</li></ul></div>
-          <div class="tag-row"><span class="tag">Vue</span><span class="tag">Element UI</span><span class="tag">Node.js</span><span class="tag">Koa</span><span class="tag">gRPC</span><span class="tag">GraphQL</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="section-head"><div><div class="section-kicker">04 / Education</div><h2>Education & Certification</h2></div></div>
-      <div class="education-card">
-        <div><h3>University of Electronic Science and Technology of China</h3><p>Bachelor’s Degree · Computer Science and Technology</p></div>
-        <div class="date">2021 – 2024</div>
-      </div>
-      <div class="education-card" style="margin-top:14px">
-        <div><h3>Public English Test System (PETS)</h3><p>Level 3</p></div>
-        <div class="date">Certification</div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <strong>Wu</strong> · Senior Frontend Engineer / Forward Deployed Engineer (FDE)<br>
-    Shanghai, China · <a href="tel:+8615057769636">+86 150 5776 9636</a><br>
-    <a class="backtop" href="#top">Back to top ↑</a>
-  </footer>
-  <script>
-    const menuButton = document.getElementById('menuButton');
-    const navLinks = document.getElementById('navLinks');
-    menuButton.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-    });
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-    }));
-  </script>
-</body>
-</html>
+<body>
+<header class="nav"><div class="nav-inner"><a class="nav-logo" href="#top">WU</a><nav class="links" aria-label="Main navigation">
+<a href="#summary">Summary</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#opensource">Open Source</a><a href="#education">Education</a>
+<a class="pdf" href="assets/resume.pdf" download="Wu_Senior_FullStack_Engineer_Resume_EN.pdf" type="application/pdf">Download PDF</a>
+</nav></div></header>
+<main id="top">
+<div class="hero"><div class="eyebrow">Frontend Engineering  /  AI Solutions  /  Technical Delivery</div><h1>Wu</h1><div class="role">Senior Full-Stack Engineer / Tech Lead</div>
+<div class="contact"><span>Shanghai, China</span><a href="tel:+8615057769636">+86 150 5776 9636</a><a href="https://github.com/JerryWu1234" target="_blank" rel="noopener">https://github.com/JerryWu1234</a></div>
+<div class="metrics"><span><strong>10+ Years of Experience</strong></span><span>Frontend / Full Stack / AI Delivery</span></div>
+<p class="intro">Frontend-focused engineer with 10+ years of software development experience across web platforms, backend integration, intelligent cockpit products, and AI-powered engineering automation.</p></div>
+<section class="content" id="summary"><h2>Professional Summary</h2><div class="record intro-list"><p>Experienced in leading engineering teams, translating business requirements into technical solutions, and delivering across H5, cloud, and in-vehicle systems. Focused on practical AI adoption, engineering quality, and infrastructure efficiency.</p><p>Active open-source contributor to Qwik, Astro, Qwik DevTools, and Vue UI component libraries.</p></div></section>
+<section class="content" id="experience"><h2>Professional Experience</h2><article class="record"><div class="record-head"><div><h3>Great Wall Motor Co., Ltd.</h3><div class="record-role">Senior Full-Stack Engineer / Tech Lead</div></div><div class="date">Mar 2020 - Present</div></div><ul class="bullets"><li><strong>Product Development &amp; Leadership:</strong> Led a six-person team delivering mobile and in-vehicle intelligent cockpit applications, contributing to the broader product's growth from launch to approximately 2 million users.</li><li><strong>AI Solution Delivery:</strong> Independently designed and developed AI engineering workflows, a project knowledge assistant, and an after-sales feedback bot; supported adoption across multiple engineering and business teams, covering approximately 30 internal projects.</li><li><strong>Engineering Quality &amp; Delivery:</strong> Established traceability from requirements and defects to code changes and releases; coordinated code reviews, regression testing, and GitLab CI/CD for release quality.</li><li><strong>Architecture &amp; Cost Optimization:</strong> Improved micro-frontend architecture and service consolidation; moved eligible static services to Tencent Cloud COS/CDN and decommissioned redundant compute, reducing server instances by approximately 25% within the frontend systems under my responsibility. Built container-isolated environments using OpenSandbox.</li><li><strong>Technical Leadership:</strong> Delivered company-wide AI technology presentations and promoted practical cross-team adoption through technical demonstrations and knowledge sharing.</li></ul></article><article class="record"><div class="record-head"><div><h3>Shanghai Junzheng Network Technology Co., Ltd. (Hello)</h3><div class="record-role">Web Frontend Engineer</div></div><div class="date">Dec 2018 - Mar 2020</div></div><ul class="bullets"><li><strong>Enterprise Frontend:</strong> Maintained and enhanced a supply-chain management application with Vue, Element UI, and micro-frontends, covering suppliers, bicycle materials, inventory, and shipments.</li><li><strong>BFF &amp; Service Integration:</strong> Built selected Node.js BFF and GraphQL/Apollo Server APIs using Koa, gRPC, and GraphQL; aggregated Java backend and third-party data for frontend business workflows.</li><li><strong>Engineering &amp; Delivery:</strong> Developed reusable business components, contributed to configurable pages, applied TDD selectively, and worked with product and backend teams on feature delivery.</li></ul></article><article class="record"><div class="record-head"><div><h3>Shanghai Junxue Investment Management Co., Ltd.</h3><div class="record-role">Web Frontend Engineer</div></div><div class="date">Oct 2017 - Oct 2018</div></div><ul class="bullets"><li><strong>Mobile Web Development:</strong> Developed online-course, marketing, and e-commerce H5 applications using Vue.js, ES6, and Mint UI for WeChat channels.</li><li><strong>Responsive &amp; Configurable UI:</strong> Implemented vw/vh mobile adaptation, resolved iOS scrolling and overlay interaction issues, and contributed to dynamically configurable marketing pages.</li><li><strong>Multi-channel Delivery:</strong> Supported features across WeChat Mini Programs, Official Accounts, and H5 applications.</li></ul></article><article class="record"><div class="record-head"><div><h3>Zhejiang Canaan Technology Co., Ltd.</h3><div class="record-role">Web Frontend Engineer</div></div><div class="date">Mar 2017 - Oct 2017</div></div><ul class="bullets"><li><strong>Frontend Development:</strong> Translated business requirements into HTML, CSS, and JavaScript web pages.</li><li><strong>Backend Integration &amp; QA:</strong> Connected to Java services through Ajax, tested core business workflows, and helped identify and resolve delivery defects.</li></ul></article></section>
+<section class="content" id="projects"><h2>Selected Projects</h2><article class="record project"><div class="record-head"><div><h3>AI-Powered Engineering Lifecycle Automation Platform</h3><div class="record-role">AI Engineer</div></div><div class="date">Jan 2026 - Present</div></div><p class="overview">Designed and developed an AI-driven engineering platform for defect analysis, code fixes, and automated testing across H5, cloud, and in-vehicle systems, with human decision gates retained for critical changes.</p><h4>Core Workflow</h4><p class="workflow">Jira requirement / bug -&gt; repository and branch -&gt; AI analysis and fix plan -&gt; DingTalk approval -&gt; AI code changes and tests -&gt; human MR review and merge -&gt; QA acceptance -&gt; manually triggered production release.</p><h4>Key Contributions</h4><ul class="bullets"><li><strong>Platform Architecture:</strong> Independently built the platform with TypeScript, Node.js, and Fastify, integrating Jira, GitLab, testing, and release systems via APIs to make workflow status and requirement-to-release traceability visible.</li><li><strong>AI Analysis &amp; Context:</strong> Connected PRD, Wiki, logs, and code through MCP services; implemented RLM-inspired long-context processing in TypeScript. LangChain-based multi-agent analysis for H5, cloud, and in-vehicle systems is being developed, with a primary agent intended to verify findings against original error evidence.</li><li><strong>Automated Fixes &amp; Quality Gates:</strong> Added DingTalk approval before code modification, followed by ESLint, smoke, and E2E checks. Failed validation can trigger iterative fixes for up to 30 minutes before escalation. Human MR review, merge, QA acceptance, and production release remain mandatory.</li></ul><h4>Results</h4><div class="outcomes"><ul class="bullets"><li>Based on usage estimates, AI correctly analyzes root causes and produces fix plans for approximately 30% of reported defects; some issues support automatic code changes.</li><li>Approved tasks can run unattended overnight while preserving human review and release controls.</li></ul></div></article><article class="record project"><div class="record-head"><div><h3>AI Project Knowledge &amp; Collaboration Assistant</h3><div class="record-role">Project Lead</div></div><div class="date">Jul 2026 - Present</div></div><p class="overview">Built an AI project assistant for concurrent automotive R&amp;D programs spanning H5, cloud, and in-vehicle systems, addressing fragmented meeting notes, frequent cross-team updates, and costly manual coordination.</p><h4>Core Workflow</h4><p class="workflow">Collect meeting notes and project materials -&gt; organize the knowledge base -&gt; ask the DingTalk bot -&gt; retrieve knowledge or invoke MCP tools -&gt; return project or Jira data, or perform authorized collaboration actions.</p><h4>Key Contributions</h4><ul class="bullets"><li><strong>Knowledge Architecture:</strong> Independently designed the solution and consolidated meeting decisions, project progress, version changes, risks, PRDs, and UI/UX materials into a searchable knowledge base.</li><li><strong>DingTalk Integration:</strong> Developed a group-chat bot interface for natural-language project questions, knowledge retrieval, and concise responses.</li><li><strong>MCP &amp; Jira Collaboration:</strong> Integrated MCP tools with Jira for defect and task lookup, task assignment, and notifications to designated colleagues.</li></ul><h4>Results</h4><div class="outcomes"><ul class="bullets"><li>Adopted across multiple engineering projects and teams as a shared entry point for project information and collaboration.</li><li>Based on actual usage estimates, reduced manual effort for repetitive project coordination and information synchronization by approximately 80% within the supported workflows; this is not an overall R&amp;D cost reduction.</li></ul></div></article><article class="record project"><div class="record-head"><div><h3>Intelligent Cockpit Visual Skill Orchestration System</h3><div class="record-role">Project Lead</div></div><div class="date">Apr 2020 - Present</div></div><p class="overview">Enabled users to build personalized in-car automation by freely combining triggers, conditions, and vehicle actions rather than relying only on manufacturer presets.</p><h4>Core Workflow</h4><p class="workflow">Compose a skill on the H5 visual canvas -&gt; store the rule in the cloud -&gt; deliver it to the vehicle -&gt; automatically execute actions when conditions are met.</p><h4>Key Contributions</h4><ul class="bullets"><li><strong>H5 Delivery &amp; Collaboration:</strong> Independently developed the H5 pages and collaborated with product, design, vehicle, cloud, and QA teams on feature integration and releases.</li><li><strong>Configuration-driven UI:</strong> Designed a reusable dynamic rendering system, with atomic-capability configurations managed centrally and interfaces generated in H5; updates to existing configurations generally do not require an H5 release.</li><li><strong>Visual Orchestration:</strong> Developed an SVG-based free-form canvas for combining triggers, conditions, and actions; integrated the H5 experience with the existing cloud-to-vehicle rule execution workflow.</li><li><strong>Quality &amp; Delivery:</strong> Debugged mobile compatibility and production feedback on real devices, coordinated fixes, and followed issues through testing and release.</li></ul><h4>Results</h4><div class="outcomes"><ul class="bullets"><li>Supported interface configurations for more than 600 atomic capabilities, reducing repetitive page development and speeding up capability integration.</li><li>Delivered the complete workflow from H5 composition to cloud storage and in-vehicle conditional execution. The approximately 2 million users cited in work experience refer to the broader product, not usage of this feature alone.</li></ul></div></article></section>
+<section class="content" id="opensource"><h2>Open-Source Contributions</h2><div class="record"><p class="opensource-stat">151 PRs submitted · 110 merged across four repositories (verified through Nov 15, 2026)</p><ul class="bullets"><li><strong>Astro:</strong> Contributed to SSR/SSG, routing, and build reliability; fixed async component resource and hydration issues and participated in HTML compression support.</li><li><strong>Qwik / Qwik City:</strong> Improved request-scoped SSR context with AsyncLocalStorage, runtime behavior, Vite integration, and ESLint compatibility.</li><li><strong>Qwik DevTools:</strong> Developed page inspection, component analysis, performance insights, and build analysis features, and supported integration into the Qwik main repository.</li><li><strong>Element3:</strong> Contributed to MessageBox, Menu, and Tag components, Vue 3 compatibility, TDD practices, and development tooling.</li></ul></div></section>
+<section class="content" id="education"><h2>Education</h2><div class="record"><div class="record-head"><div><h3>University of Electronic Science and Technology of China</h3><div class="record-role">Bachelor's Degree in Computer Science and Technology</div></div><div class="date">2021 - 2024</div></div></div></section>
+</main><footer class="footer">Wu | Senior Full-Stack Engineer / Tech Lead | <a href="https://github.com/JerryWu1234">https://github.com/JerryWu1234</a></footer>
+</body></html>
